@@ -61,7 +61,7 @@
                 </th>
                 <td>
                     <button type="button" class="btn btn-info btn-sm">Detail</button>
-                    <a href="edit_pengguna" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="update" class="btn btn-warning btn-sm">Edit</a>
                     <a href="delete" class="btn btn-danger btn-sm">Hapus</a>
                 </td>
                 <td><img src="assets/img/" alt="avatar" width="50" height="30"></td>
