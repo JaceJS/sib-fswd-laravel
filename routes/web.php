@@ -26,5 +26,5 @@ Route::get('/logout', [UsersController::class, "logout"]);
 
 Route::get('/create', [UsersController::class, "create"]);
 
-Route::get('/edit_pengguna', [UsersController::class, "edit_pengguna"]);
+Route::get('/update', [UsersController::class, "update"]);
 
