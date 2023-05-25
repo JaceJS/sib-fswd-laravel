@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,17 +18,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Landing Page
+Route::get('/', [DashboardController::class, "landing"]);
 
-Route::get('/index', [UsersController::class, "index"]);
+// Dashboard
+Route::get('/dashboard', [DashboardController::class, "dashboard"]) -> name('dashboard');
 
-Route::get('/login', [UsersController::class, "login"]);
+// Category & Products
+Route::get('/category', [CategoryController::class, "index"]) -> name('category.index');
+Route::get('/products', [ProductsController::class, "index"]) -> name('products.index');
 
-Route::get('/logout', [UsersController::class, "logout"]);
+// User & Role
+Route::get('/users', [UsersController::class, "index"]) -> name('users.index');
+Route::get('/roles', [RolesController::class, "index"]) -> name('roles.index');
 
-Route::get('/create', [UsersController::class, "create"]);
 
-Route::get('/update', [UsersController::class, "update"]);
 

@@ -10,23 +10,19 @@ class UsersController extends Controller
         return view('users.index');
     }
 
-    public function login(){
-        return view('users.login');
-    }
+    // public function login(){
+    //     return view('users.login');
+    // }
 
-    public function logout(){
-        return view('users.logout');
-    }
+    // public function logout(){
+    //     return view('users.logout');
+    // }
 
-    public function create(){
-        return view('users.create');
-    }
+    // public function create(){
+    //     return view('users.create');
+    // }
 
-    public function update(){
-        return view('users.update');
-    }
-
-    public function delete(){
-        return view('users.delete');
-    }
+    // public function update(){
+    //     return view('users.update');
+    // }
 }
