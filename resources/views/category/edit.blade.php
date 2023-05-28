@@ -2,7 +2,7 @@
 
 @section('content')    
     <div class="container-fluid px-4">
-        <h1>Tambah Category</h1>
+        <h2 class="my-4">Edit Category</h2>
         <div class="card mb-4">
             <div class="card-body">
                 <form action="{{ route('category.update', $category->id) }}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>

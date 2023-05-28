@@ -26,6 +26,14 @@ Route::get('/', [DashboardController::class, "landing"]);
 // Dashboard
 Route::get('/dashboard', [DashboardController::class, "dashboard"]) -> name('dashboard');
 
+// Sliders
+Route::get('/sliders', [SlidersController::class, 'index'])->name('sliders.index'); 
+Route::get('/sliders/create', [SlidersController::class, 'create'])->name('sliders.create'); 
+Route::post('/sliders', [SlidersController::class, 'store'])->name('sliders.store'); 
+Route::get('/sliders/edit/{id}', [SlidersController::class, 'edit'])->name('sliders.edit'); 
+Route::put('/sliders/{id}', [SlidersController::class, 'update'])->name('sliders.update'); 
+Route::delete('/sliders/{id}', [SlidersController::class, 'destroy'])->name('sliders.destroy');
+
 // Brands
 Route::get('/brands', [BrandsController::class, "index"]) -> name('brands.index');
 Route::get('/brands/create', [BrandsController::class, "create"]) -> name('brands.create');
@@ -50,22 +58,17 @@ Route::get('/products/edit/{id}', [ProductsController::class, "edit"]) -> name('
 Route::put('/products/{id}', [ProductsController::class, "update"]) -> name('products.update'); 
 Route::delete('/products/{id}', [ProductsController::class, "destroy"]) -> name('products.destroy'); 
 
-// Users
-Route::get('/users', [UsersController::class, "index"]) -> name('users.index');
-
 // Roles
 Route::get('/roles', [RolesController::class, "index"]) -> name('roles.index');
 Route::get('/roles/create', [RolesController::class, "create"]) -> name('roles.create');
 Route::post('/roles', [RolesController::class, "store"]) -> name('roles.store');
 Route::get('/roles/edit/{id}', [RolesController::class, "edit"]) -> name('roles.edit');
+Route::put('/roles/{id}', [RolesController::class, "update"]) -> name('roles.update');
 Route::delete('/roles/{id}', [RolesController::class, "destroy"]) -> name('roles.destroy');
 
-// Sliders
-Route::get('/sliders', [SlidersController::class, 'index'])->name('sliders.index'); 
-Route::get('/sliders/create', [SlidersController::class, 'create'])->name('sliders.create'); 
-Route::post('/sliders', [SlidersController::class, 'store'])->name('sliders.store'); 
-Route::get('/sliders/edit/{id}', [SlidersController::class, 'edit'])->name('sliders.edit'); 
-Route::put('/sliders/{id}', [SlidersController::class, 'update'])->name('sliders.update'); 
-Route::delete('/sliders/{id}', [SlidersController::class, 'destroy'])->name('sliders.destroy');
+// Users
+Route::get('/users', [UsersController::class, "index"]) -> name('users.index');
+
+
 
 
