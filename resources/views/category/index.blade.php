@@ -15,20 +15,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($data as $category)
-                        <tr>                            
-                            <td>{{ $loop->iteration }}</td>                            
-                            <td>{{ $category['name'] }}</td>
-                            <td>
-                                <a href="#" class="btn btn-info btn-sm">Detail</a>
-                                <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                                <a href="#" class="btn btn-danger btn-sm">Hapus</a>
-                            </td>                          
+                        @foreach ($categories as $category)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $category->name }}</td>
+                            <td>                                    
+                                <form onsubmit="return confirm('Are you sure? ');" action="{{ route('category.destroy', $category->id) }}" method="POST">
+                                    <a href="{{ route('category.edit', $category->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    
+                                    @csrf
+                                    @method('DELETE')
+                                    
+                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>                                  
+                                </form>
+                            </td>
                         </tr>
                         @endforeach
-                    </tbody>
+                    </tbody>                                    
                 </table>
-            </div>
+                <div class="container text-center">
+                    <a href="{{ route('category.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
+                </div>                   
+            </div>            
         </div>
     </div>
 @endsection

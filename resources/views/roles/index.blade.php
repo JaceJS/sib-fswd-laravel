@@ -14,8 +14,28 @@
                             <th>Action</th>                            
                         </tr>
                     </thead>
-
+                    <tbody>
+                        @foreach($roles as $data)
+                        <tr>                            
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $data->name }}</td>
+                            <td>
+                                <form onsubmit="return confirm('Are you sure? ');" action="{{ route('roles.destroy', $data->id) }}" method="POST">
+                                    <a href="{{ route('roles.edit', $data->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    
+                                    @csrf
+                                    @method('DELETE')
+                                    
+                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>                                  
+                                </form>
+                            </td>       
+                        </tr>
+                        @endforeach
+                    </tbody>
                 </table>
+                <div class="container text-center">
+                    <a href="{{ route('roles.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
+                </div> 
             </div>
         </div>
     </div>
