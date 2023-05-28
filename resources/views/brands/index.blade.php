@@ -16,13 +16,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($brands as $brand)
+                            @foreach ($brands as $data)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $brand->name }}</td>
+                                    <td>{{ $data->name }}</td>
                                     <td>
-                                        <form onsubmit="return confirm('Are you sure? ');" action="{{ route('brands.destroy', $brand->id) }}" method="POST">
-                                            <a href="{{ route('brands.edit', $brand->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                        <form onsubmit="return confirm('Are you sure? ');" action="{{ route('brands.destroy', $data->id) }}" method="POST">
+                                            <a href="{{ route('brands.edit', $data->id) }}" class="btn btn-sm btn-warning">Edit</a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">Delete</button>

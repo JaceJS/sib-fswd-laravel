@@ -42,7 +42,7 @@ class SlidersController extends Controller
         return redirect()->route('sliders.index');
     }
 
-    public function edit(Request $request, $id)
+    public function edit($id)
     {        
         // find() merupakan fungsi eloquent untuk mencari data berdasarkan primary key
         $slider = Slider::find($id);
