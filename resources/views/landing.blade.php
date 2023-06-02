@@ -39,7 +39,7 @@
                             Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </a>
-                        <a href="{{ route('dashboard') }}" class="btn btn-outline-dark ms-2" type="submit">
+                        <a href="{{ route('login.index') }}" class="btn btn-outline-dark ms-2" type="submit">
                             <i class="bi-person-fill me-1"></i>
                             Login                            
                         </a>
@@ -55,11 +55,6 @@
                         aria-current="{{ $loop->first ? 'true' : '' }}" aria-label="Slide 1"></button>
                 @endforeach
             </div>
-            {{-- <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div> --}}
             <div class="carousel-inner">                
                 @foreach ($sliders as $slider)
                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}" data-bs-interval="3000">

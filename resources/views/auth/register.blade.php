@@ -48,7 +48,7 @@
                             <input class="btn btn-primary mt-3" type="submit" value="Register" name="register"></input>
                         </div>
                     </form>
-                    <small class="d-block mt-3">Already have an account? <a href="{{ route('login') }}">Login</a></small>
+                    <small class="d-block mt-3">Already have an account? <a href="{{ route('login.index') }}">Login</a></small>
                 </div>
             </div>
         </div>
