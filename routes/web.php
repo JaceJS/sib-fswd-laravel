@@ -3,7 +3,10 @@
 use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LandingController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SlidersController;
 use App\Http\Controllers\UsersController;
@@ -21,10 +24,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Landing Page
-Route::get('/', [DashboardController::class, "landing"]);
+Route::get('/', [LandingController::class, "index"]) -> name('landing');
 
 // Dashboard
 Route::get('/dashboard', [DashboardController::class, "dashboard"]) -> name('dashboard');
+
+// Login
+Route::get('/login', [LoginController::class, "index"]) -> name('login');
+Route::get('/login', [LoginController::class, "authenticate"]) -> name('auth');
+
+// Register
+Route::get('/register', [RegisterController::class, "index"]) -> name('register.index');
+Route::post('/register', [RegisterController::class, "store"]) -> name('register.store');
 
 // Sliders
 Route::get('/sliders', [SlidersController::class, 'index'])->name('sliders.index'); 
