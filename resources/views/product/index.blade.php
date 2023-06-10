@@ -30,8 +30,8 @@
                             <td>{{ $product->brands }}</td>  
                             <td>{{ $product->rating }}</td>  
                             <td>
-                                <form onsubmit="return confirm('Are you sure? ');" action="{{ route('products.destroy', $product->id) }}" method="POST">
-                                    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <form onsubmit="return confirm('Are you sure? ');" action="{{ route('product.destroy', $product->id) }}" method="POST">
+                                    <a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                     
                                     @csrf
                                     @method('DELETE')
@@ -44,7 +44,7 @@
                     </tbody>
                 </table>
                 <div class="container text-center">
-                    <a href="{{ route('products.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
+                    <a href="{{ route('product.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
                 </div> 
             </div>
         </div>

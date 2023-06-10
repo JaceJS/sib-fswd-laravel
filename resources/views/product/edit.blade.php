@@ -3,7 +3,7 @@
 @section('content')     
     <div class="container-fluid px-4">
         <h2>Edit Product</h2>
-        <form action={{ route('products.update', $products->id) }} method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+        <form action={{ route('product.update', $products->id) }} method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
             @csrf
             @method('PUT')
 
@@ -44,7 +44,7 @@
 
             <div class="col-12 mt-4 d-flex justify-content-between">
                 <button class="btn btn-primary" type="submit" value="Simpan">Simpan</button>
-                <a href="{{ route('products.index') }}" class="btn btn-danger">Kembali</a>
+                <a href="{{ route('product.index') }}" class="btn btn-danger">Kembali</a>
             </div>
         </form>
     </div>

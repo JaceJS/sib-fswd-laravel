@@ -7,13 +7,13 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ProductsController extends Controller
+class ProductController extends Controller
 {
     public function index(){
         // $products = Product::all();
         $products = Product::with('category')->get();
         
-        return view('products.index', compact('products'));
+        return view('product.index', compact('products'));
     }
 
     public function create()
@@ -21,7 +21,7 @@ class ProductsController extends Controller
         $brands = Brand::all();
         $categories = Category::all();
 
-        return view('products.create', compact('brands', 'categories'));
+        return view('product.create', compact('brands', 'categories'));
     }
 
     public function store(Request $request)
@@ -35,7 +35,7 @@ class ProductsController extends Controller
             'rating' => $request->rating,
         ]);
 
-        return redirect()->route('products.index');
+        return redirect()->route('product.index');
     }
 
     public function edit($id)
@@ -48,7 +48,7 @@ class ProductsController extends Controller
         $brands = Brand::all();
         $categories = Category::all();
 
-        return view('products.edit', compact('products', 'brands', 'categories'));
+        return view('product.edit', compact('products', 'brands', 'categories'));
     }
 
     public function update(Request $request, $id)
@@ -64,7 +64,7 @@ class ProductsController extends Controller
             'rating' => $request->rating,
         ]);
 
-        return redirect()->route('products.index');
+        return redirect()->route('product.index');
     }
 
     public function destroy($id)
@@ -76,6 +76,6 @@ class ProductsController extends Controller
         $product->delete();
         
         // redirect ke halaman product.index
-        return redirect()->route('products.index');
+        return redirect()->route('product.index');
     }
 }

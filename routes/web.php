@@ -5,7 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SlidersController;
@@ -74,15 +74,15 @@ Route::middleware('auth')->group(function() {
     });
 
     // Products
-    Route::get('/products', [ProductsController::class, "index"]) -> name('products.index');
+    Route::get('/product', [ProductController::class, "index"]) -> name('product.index');
     
     // middleware utk role admin atau staff
     Route::middleware('role:Admin|Staff')->group(function() {
-        Route::get('/products/create', [ProductsController::class, "create"]) -> name('products.create');
-        Route::post('/products', [ProductsController::class, "store"]) -> name('products.store');
-        Route::get('/products/edit/{id}', [ProductsController::class, "edit"]) -> name('products.edit');
-        Route::put('/products/{id}', [ProductsController::class, "update"]) -> name('products.update'); 
-        Route::delete('/products/{id}', [ProductsController::class, "destroy"]) -> name('products.destroy'); 
+        Route::get('/product/create', [ProductController::class, "create"]) -> name('product.create');
+        Route::post('/product', [ProductController::class, "store"]) -> name('product.store');
+        Route::get('/product/edit/{id}', [ProductController::class, "edit"]) -> name('product.edit');
+        Route::put('/product/{id}', [ProductController::class, "update"]) -> name('product.update'); 
+        Route::delete('/product/{id}', [ProductController::class, "destroy"]) -> name('product.destroy'); 
     });
     
 
