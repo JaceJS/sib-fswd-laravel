@@ -8,7 +8,7 @@
             <div class="card mb-4">
                 <div class="card-body">
 
-                    <form action="{{ route('sliders.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('slider.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="col-md-12">
@@ -28,7 +28,7 @@
 
                         <div class="col-12 mt-4 d-flex justify-content-between">
                             <button class="btn btn-primary" type="submit" value="Simpan">Simpan</button>
-                            <a href="{{ route('sliders.index') }}" class="btn btn-danger">Kembali</a>
+                            <a href="{{ route('slider.index') }}" class="btn btn-danger">Kembali</a>
                         </div>
                     </form>
 

@@ -5,7 +5,7 @@
         <h2 class="my-4">Create Roles</h2>
         <div class="card mb-4">
             <div class="card-body">
-                <form action="{{ route('roles.store') }}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+                <form action="{{ route('role.store') }}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
                     @csrf
 
                     <div class="col-md-12">
@@ -14,7 +14,7 @@
                     </div>
                     <div class="col-12 mt-4 d-flex justify-content-between">
                         <button class="btn btn-primary" type="submit" value="Simpan">Simpan</button>
-                        <a href="{{ route('roles.index') }}" class="btn btn-danger">Kembali</a>
+                        <a href="{{ route('role.index') }}" class="btn btn-danger">Kembali</a>
                     </div>
                 </form>
             </div>

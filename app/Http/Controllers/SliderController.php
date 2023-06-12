@@ -6,7 +6,7 @@ use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class SlidersController extends Controller
+class SliderController extends Controller
 {
     public function index()
     {
@@ -14,13 +14,13 @@ class SlidersController extends Controller
         $sliders = Slider::all();
 
         // passing data sliders ke view slider.index
-        return view('sliders.index', compact('sliders'));
+        return view('slider.index', compact('sliders'));
     }
 
     public function create()
     {
         // menampilkan halaman create
-        return view('sliders.create');
+        return view('slider.create');
     }
 
     public function store(Request $request)
@@ -39,7 +39,7 @@ class SlidersController extends Controller
         ]);
 
         // alihkan halaman ke halaman slider.index
-        return redirect()->route('sliders.index');
+        return redirect()->route('slider.index');
     }
 
     public function edit($id)
@@ -47,7 +47,7 @@ class SlidersController extends Controller
         // find() merupakan fungsi eloquent untuk mencari data berdasarkan primary key
         $slider = Slider::find($id);
         
-        return view('sliders.edit', compact('slider'));
+        return view('slider.edit', compact('slider'));
     }
 
     public function update(Request $request, $id)
@@ -89,6 +89,6 @@ class SlidersController extends Controller
 
         $slider->delete();
 
-        return redirect()->route('sliders.index');
+        return redirect()->route('slider.index');
     }
 }

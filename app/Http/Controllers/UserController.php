@@ -7,21 +7,21 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     public function index()
     {
         // mengambil data users beserta informasi role yang terkait dengan user.        
         $users = User::with('role')->get();
         // dd($users); //mengecek data variabel users
-        return view('users.index', compact('users'));
+        return view('user.index', compact('users'));
     }
 
     public function create()
     {
         $roles = Role::all();
         
-        return view('users.create', compact('roles'));
+        return view('user.create', compact('roles'));
     }
 
     public function store(Request $request)
@@ -35,7 +35,7 @@ class UsersController extends Controller
             'phone' => $request->phone,
         ]);
 
-        return redirect()->route('users.index');
+        return redirect()->route('user.index');
     }
 
     public function edit($id)
@@ -46,7 +46,7 @@ class UsersController extends Controller
         // mengambil semua data dari Role
         $roles = Role::all();
 
-        return view('users.edit', compact('users', 'roles'));
+        return view('user.edit', compact('users', 'roles'));
     }
 
     public function update(Request $request, $id)
@@ -59,7 +59,7 @@ class UsersController extends Controller
             'phone' => $request->phone,
         ]);
 
-        return redirect()->route('users.index');
+        return redirect()->route('user.index');
     }
 
     public function destroy($id)
@@ -68,7 +68,7 @@ class UsersController extends Controller
 
         $users->delete();
 
-        return redirect()->route('users.index');
+        return redirect()->route('user.index');
     }
 
 }

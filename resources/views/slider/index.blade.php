@@ -29,8 +29,8 @@
                                     </td>
 
                                     <td>
-                                        <form onsubmit="return confirm('Are you sure? ');" action="{{ route('sliders.destroy', $slider->id) }}" method="POST">
-                                            <a href="{{ route('sliders.edit', $slider->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                        <form onsubmit="return confirm('Are you sure? ');" action="{{ route('slider.destroy', $slider->id) }}" method="POST">
+                                            <a href="{{ route('slider.edit', $slider->id) }}" class="btn btn-sm btn-warning">Edit</a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
@@ -41,7 +41,7 @@
                         </tbody>
                     </table>
                     <div class="container text-center">
-                        <a href="{{ route('sliders.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
+                        <a href="{{ route('slider.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
                     </div> 
                 </div>
             </div>

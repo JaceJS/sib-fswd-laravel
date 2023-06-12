@@ -11,9 +11,9 @@
             
             @if (Auth::user()->role->name == 'Admin')
                 <div class="sb-sidenav-menu-heading">Content</div>
-                <a class="nav-link" href="{{ route('sliders.index') }}">
+                <a class="nav-link" href="{{ route('slider.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>
-                    Slider
+                    Sliders
                 </a>
             @endif
 
@@ -26,7 +26,7 @@
                 </a>
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ route('brands.index') }}">Brand</a>
+                        <a class="nav-link" href="{{ route('brand.index') }}">Brand</a>
                         <a class="nav-link" href="{{ route('category.index') }}">Category</a>
                         <a class="nav-link" href="{{ route('product.index') }}">Product</a>
                     </nav>
@@ -48,8 +48,8 @@
                 </a>
                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ route('roles.index') }}">Role</a>
-                        <a class="nav-link" href="{{ route('users.index') }}">User</a>
+                        <a class="nav-link" href="{{ route('role.index') }}">Role</a>
+                        <a class="nav-link" href="{{ route('user.index') }}">User</a>
                     </nav>
                 </div>   
             @endif         

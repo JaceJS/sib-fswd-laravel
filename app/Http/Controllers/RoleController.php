@@ -5,18 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
-class RolesController extends Controller
+class RoleController extends Controller
 {
     public function index()
     {
         $roles = Role::all();
 
-        return view('roles.index', compact('roles'));
+        return view('role.index', compact('roles'));
     }
 
     public function create()
     {        
-        return view('roles.create');
+        return view('role.create');
     }
 
     public function store(Request $request)
@@ -25,14 +25,14 @@ class RolesController extends Controller
             'name' => $request->name,
         ]);
 
-        return redirect()->route('roles.index');
+        return redirect()->route('role.index');
     }  
 
     public function edit($id)
     {
         $roles = Role::find($id);
 
-        return view('roles.edit', compact('roles'));
+        return view('role.edit', compact('roles'));
     }
 
     public function update(Request $request, $id)
@@ -41,7 +41,7 @@ class RolesController extends Controller
             'name' => $request->name,
         ]);
 
-        return redirect()->route('roles.index');
+        return redirect()->route('role.index');
     }
 
     public function destroy($id)
@@ -50,6 +50,6 @@ class RolesController extends Controller
 
         $roles->delete();
 
-        return redirect()->route('roles.index');
+        return redirect()->route('role.index');
     }
 }

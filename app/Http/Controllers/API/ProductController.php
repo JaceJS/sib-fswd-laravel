@@ -41,6 +41,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
             'category' => 'required',
             'name' => 'required|string|min:3',
@@ -57,19 +58,12 @@ class ProductController extends Controller
             ], 422);
         }
 
-        // // ubah nama file
-        // $imageName = time() . '.' . $request->image->extension();
-
-        // // simpan file ke folder public/product
-        // Storage::putFileAs('public/product', $request->image, $imageName);
-
         $product = Product::create([
             'category_id' => $request->category,
             'name' => $request->name,
             'price' => $request->price,
             'sale_price' => $request->sale_price,
-            'brands' => $request->brand,
-            // 'image' => $imageName,
+            'brands' => $request->brand,            
         ]);
 
         return response()->json([
@@ -148,38 +142,4 @@ class ProductController extends Controller
     }
 
 
-    // public function store(Request $request)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'category_id' => 'required',
-    //         'name' => 'required|string|min:3',
-    //         'price' => 'required|integer',
-    //         'sale_price' => 'required|integer',
-    //         'brand' => 'required|string',
-    //         'rating' => 'required|integer',
-    //     ]);        
-
-    //     if($validator->fails()){
-    //         return response()->json([                
-    //             'success' => false,
-    //             'message' => 'Data produk tidak ditemukan',
-    //             'data' => '',          
-    //         ], 422);
-    //     }        
-
-    //     $product = Product::create([
-    //         'category_id' => $request->category,
-    //         'name' => $request->name,
-    //         'price' => $request->price,
-    //         'sale_price' => $request->sale_price,
-    //         'brands' => $request->brand,
-    //         'rating' => $request->rating,
-    //     ]);
-
-    //     return response()->json([
-    //         'success' => true,
-    //         'message' => 'Produk berhasil ditambahkan',    
-    //         'data' => $product 
-    //     ], 201);
-    // }
 }

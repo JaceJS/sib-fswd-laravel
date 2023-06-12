@@ -20,8 +20,8 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $data->name }}</td>
                             <td>
-                                <form onsubmit="return confirm('Are you sure? ');" action="{{ route('roles.destroy', $data->id) }}" method="POST">
-                                    <a href="{{ route('roles.edit', $data->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <form onsubmit="return confirm('Are you sure? ');" action="{{ route('role.destroy', $data->id) }}" method="POST">
+                                    <a href="{{ route('role.edit', $data->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                     
                                     @csrf
                                     @method('DELETE')
@@ -34,7 +34,7 @@
                     </tbody>
                 </table>
                 <div class="container text-center">
-                    <a href="{{ route('roles.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
+                    <a href="{{ route('role.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
                 </div> 
             </div>
         </div>

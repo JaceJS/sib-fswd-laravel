@@ -27,8 +27,8 @@
                             <td>{{ $data->email }}</td>
                             <td>{{ $data->phone }}</td>
                             <td>                                
-                                <form onsubmit="return confirm('Are you sure? ');" action="{{ route('users.destroy', $data->id) }}" method="POST">
-                                    <a href="{{ route('users.edit', $data->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                <form onsubmit="return confirm('Are you sure? ');" action="{{ route('user.destroy', $data->id) }}" method="POST">
+                                    <a href="{{ route('user.edit', $data->id) }}" class="btn btn-sm btn-warning">Edit</a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger">Delete</button>
@@ -39,7 +39,7 @@
                     </tbody>
                 </table>
                 <div class="container text-center">
-                        <a href="{{ route('users.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
+                        <a href="{{ route('user.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
                     </div> 
             </div>
         </div>

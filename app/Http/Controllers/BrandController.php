@@ -5,18 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 
-class BrandsController extends Controller
+class BrandController extends Controller
 {
     public function index()
     {        
         $brands = Brand::all();
         
-        return view('brands.index', compact('brands'));
+        return view('brand.index', compact('brands'));
     }
     
     public function create()
     {        
-        return view('brands.create');
+        return view('brand.create');
     }
 
     public function store(Request $request)
@@ -25,7 +25,7 @@ class BrandsController extends Controller
             'name' => $request->name,
         ]);
         
-        return redirect()->route('brands.index');
+        return redirect()->route('brand.index');
     }
     
     public function edit(Request $request, $id)
@@ -33,7 +33,7 @@ class BrandsController extends Controller
         // find() merupakan fungsi eloquent untuk mencari data berdasarkan primary key
         $brands = Brand::find($id);
         
-        return view('brands.edit', compact('brands'));
+        return view('brand.edit', compact('brands'));
     }
 
     public function update(Request $request, $id)
@@ -42,7 +42,7 @@ class BrandsController extends Controller
             'name' => $request->name,
         ]);
         
-        return redirect()->route('brands.index');
+        return redirect()->route('brand.index');
     }
     
     public function destroy($id)
@@ -51,7 +51,7 @@ class BrandsController extends Controller
 
         $brands->delete();
         
-        return redirect()->route('brands.index');
+        return redirect()->route('brand.index');
     }
 }
 
