@@ -27,8 +27,10 @@
                             <input class="form-control" type="file" name="image" id="image" accept=".jpg, .jpeg, .png., .webp">
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <a href="{{ route('slider.index') }}" class="btn btn-secondary">Cancel</a>
+                        <div class="col-12 mt-4 d-flex justify-content-between">
+                            <button class="btn btn-primary" type="submit" value="Simpan">Simpan</button>
+                            <a href="{{ route('slider.index') }}" class="btn btn-danger">Kembali</a>
+                        </div>
                     </form>
 
                 </div>

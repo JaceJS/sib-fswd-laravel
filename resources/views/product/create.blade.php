@@ -52,7 +52,7 @@
             </div>
 
             {{-- inputan brand --}}
-        <div class="col-md-12">
+            <div class="col-md-12">
                 <label for="brand" class="form-label">Brand</label>
                 <select class="form-select @error('category') is-invalid @enderror" aria-label="brand" id="brand" name="brand">
                     <option selected disabled>- Choose Brand -</option>

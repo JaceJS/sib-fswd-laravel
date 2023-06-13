@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Shop Homepage - Start Bootstrap Template</title>
+        <title>JaceInstrumental</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{{ asset("favicon.ico") }}" />
         <!-- Bootstrap icons-->
@@ -17,7 +17,9 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">Start Bootstrap</a>
+                <a class="navbar-brand" href="#!">
+                    <img src="{{ asset('storage/logo.png') }}" alt="Logo" style="max-width: 100px">                    
+                </a> 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -25,11 +27,9 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">Cell Phones</a></li>
-                                <li><a class="dropdown-item" href="#!">Wearable</a></li>
-                                <li><a class="dropdown-item" href="#!">Tablet</a></li>
-                                <li><a class="dropdown-item" href="#!">Laptop</a></li>
-                                <li><a class="dropdown-item" href="#!">Accessories</a></li>
+                                @foreach ($categories as $category)
+                                    <li><a class="dropdown-item" href="#!">{{ $category->name }}</a></li>
+                                @endforeach
                             </ul>
                         </li>
                     </ul>
@@ -41,7 +41,7 @@
                         </a>
                         <a href="{{ route('login.index') }}" class="btn btn-outline-dark ms-2" type="submit">
                             <i class="bi-person-fill me-1"></i>
-                            Login                            
+                            Dashboard                            
                         </a>
                     </form>
                 </div>
@@ -60,8 +60,8 @@
                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}" data-bs-interval="3000">
                         <img src="{{ asset('storage/slider/' . $slider->image) }}" class="d-block w-100" alt="{{ $slider->image }}">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5>{{ $slider->title }}</h5>
-                            <p>{{ $slider->caption }}</p>
+                            <h5 class="text-dark">{{ $slider->title }}</h5>
+                            <p class="text-dark">{{ $slider->caption }}</p>
                         </div>
                     </div>
                 @endforeach
@@ -106,7 +106,7 @@
         </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; JaceInstrumental 2023</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

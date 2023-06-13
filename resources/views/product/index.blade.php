@@ -37,7 +37,13 @@
                                     <img src="{{ asset('storage/product/' . $product->image) }}" alt="{{ $product->name }}" style="max-width: 50px">
                                 @endif
                             </td>  
-                            <td>{{ $product->rating }}</td>  
+                            <td>
+                                @if ($product->approve)
+                                    <small class="text-success">Approved</small>
+                                @else
+                                    <small class="text-danger">Rejected</small>
+                                @endif
+                            </td>  
                             <td>
                                 <form onsubmit="return confirm('Are you sure? ');" action="{{ route('product.destroy', $product->id) }}" method="POST">
                                     <a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>

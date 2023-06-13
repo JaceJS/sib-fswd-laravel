@@ -60,7 +60,7 @@ class ProductController extends Controller
     }
 
     public function edit($id)
-    {                
+    {                        
         $products = Product::where('id', $id)->with('category')->first();
         
         $brands = Brand::all();
@@ -71,17 +71,36 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        $products = Product::find($id);        
+        if ($request->hasFile('image')){
+            $old_image = Product::find($id)->image;
+            
+            // menghapus file gambar yang lama
+            Storage::delete('public/product/'.$old_image);
+            
+            // ubah nama file gambar baru dengan angka random
+            $imageName = time().'.'.$request->image->extension();
 
-        $products->update([
-            'category_id' => $request->category,
-            'name' => $request->name,
-            'price' => $request->price,
-            'sale_price' => $request->sale_price,
-            'brands' => $request->brand,
-            'rating' => $request->rating,
-        ]);
+            Storage::putFileAs('public/product', $request->file('image'), $imageName);
+            
+            Product::where('id', $id)->update([
+                'title' => $request->title,
+                'caption' => $request->caption,
+                'image' => $imageName,
+            ]);
+            
+        } else {
+            // ambil data product berdasarkan id
+            $products = Product::find($id);        
 
+            $products->update([
+                'category_id' => $request->category,
+                'name' => $request->name,
+                'price' => $request->price,
+                'sale_price' => $request->sale_price,
+                'brands' => $request->brand,
+                'rating' => $request->rating,
+            ]);
+        }
         return redirect()->route('product.index');
     }
 
@@ -90,10 +109,38 @@ class ProductController extends Controller
         // ambil data product berdasarkan id
         $product = Product::find($id);
         
-        // hapus data product
+        // hapus data gambar dan product
+        Storage::delete('public/product/'.$product->image);
         $product->delete();
-        
-        // redirect ke halaman product.index
+                
         return redirect()->route('product.index');
+    }
+
+    public function approve($id)
+    {
+        // ambil data product berdasarkan id
+        $product = Product::find($id);
+
+        // update data product
+        $product->update([
+            'approve' => '1',
+        ]);
+
+        // redirect ke halaman product.index
+        return redirect()->back()->with('success', 'Product approved successfully.');
+    }
+
+    public function reject($id)
+    {
+        // ambil data product berdasarkan id
+        $product = Product::find($id);
+
+        // update data product
+        $product->update([
+            'approve' => '0',
+        ]);
+
+        // redirect ke halaman product.index
+        return redirect()->back()->with('success', 'Product rejected successfully.');
     }
 }

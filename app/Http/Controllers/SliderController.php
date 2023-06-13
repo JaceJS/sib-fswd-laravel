@@ -55,10 +55,10 @@ class SliderController extends Controller
         if ($request->hasFile('image')) {
             
             $old_image = Slider::find($id)->image;
-                        
+            
+            // menghapus file gambar yang lama
             Storage::delete('public/slider/'.$old_image);
-
-            // FILE BARU //
+            
             // ubah nama file gambar baru dengan angka random
             $imageName = time().'.'.$request->image->extension();
 
@@ -78,15 +78,16 @@ class SliderController extends Controller
             ]);
         }
         
-        return redirect()->route('sliders.index');
+        return redirect()->route('slider.index');
     }
 
     public function destroy($id)
     {        
+        // ambil data product berdasarkan id
         $slider = Slider::find($id);
         
+        // hapus data gambar dan product
         Storage::delete('public/slider/'.$slider->image);
-
         $slider->delete();
 
         return redirect()->route('slider.index');
