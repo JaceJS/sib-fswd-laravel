@@ -2,7 +2,7 @@
 
 @section('content')    
     <div class="container-fluid px-4">
-        <h2 class="my-4">Create Brands</h2>
+        <h2 class="my-4">Create Brand</h2>
         <div class="card mb-4">
             <div class="card-body">
                 <form action="{{ route('brand.store') }}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>

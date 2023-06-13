@@ -7,14 +7,17 @@
 
             <div class="card mb-4">
                 <div class="card-body">
-                    <table id="datatablesSimple">
+                    <div class="pb-3">
+                        <a href="{{ route('slider.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
+                    </div> 
+                    <table id="dataTable" class="table table-striped">
                         <thead>
-                            <tr>
+                            <tr class="table-dark">
                                 <th>#</th>
                                 <th>Title</th>
                                 <th>Caption</th>
                                 <th>Image</th>
-                                <th>Aksi</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,9 +43,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="container text-center">
-                        <a href="{{ route('slider.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
-                    </div> 
                 </div>
             </div>
         </div>

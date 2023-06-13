@@ -5,23 +5,24 @@
         <h1 class="my-4">User</h1>
         <div class="card mb-4">
             <div class="card-body">
-                <table class="table" id="datatablesSimple">
+                <div class="pb-3">
+                    <a href="{{ route('user.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
+                </div> 
+                <table id="dataTable" class="table table-striped">
                     <thead>
-                        <tr class="table-primary">
-                            <th scope="col">#</th>                        
-                            <th scope="col">Avatar</th>
+                        <tr class="table-dark">
+                            <th scope="col">#</th>                                                    
                             <th scope="col">Role</th>
-                            <th scope="col">Nama</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Phone</th>
-                            <th scope="col">Aksi</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>      
                         @foreach($users as $data)
                         <tr>
-                            <th scope="row">{{ $loop->iteration }}</th>                            
-                            <td><img src="https://placehold.co/40x40" alt="avatar"></td>
+                            <th scope="row">{{ $loop->iteration }}</th>                                                        
                             <td>{{ $data->role->name }}</td>   
                             <td>{{ $data->name }}</td>
                             <td>{{ $data->email }}</td>
@@ -37,10 +38,7 @@
                         </tr>         
                         @endforeach   
                     </tbody>
-                </table>
-                <div class="container text-center">
-                        <a href="{{ route('user.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
-                    </div> 
+                </table>                
             </div>
         </div>
     </div>

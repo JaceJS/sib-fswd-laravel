@@ -6,6 +6,7 @@
         <form action={{ route("product.store") }} method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
             @csrf
 
+            {{-- inputan category --}}
             <div class="col-md-6">
                 <label for="category" class="form-label">Category</label>
                 <select class="form-select @error('category') is-invalid @enderror" aria-label="category" id="category" name="category" required>
@@ -19,6 +20,8 @@
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
+
+            {{-- inputan nama --}}
             <div class="col-md-6">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control @error('category') is-invalid @enderror" id="name" name="name" required>
@@ -27,6 +30,8 @@
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>            
+
+            {{-- inputan price --}}
             <div class="col-md-6">
                 <label for="price" class="form-label">Price</label>
                 <input type="number" class="form-control @error('category') is-invalid @enderror" id="price" name="price" min="0" step="1000" required>
@@ -35,6 +40,8 @@
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
+
+            {{-- inputan sale price --}}
             <div class="col-md-6">
                 <label for="sale_price" class="form-label">Sale Price</label>
                 <input type="number" class="form-control @error('category') is-invalid @enderror" id="sale_price" name="sale_price" min="0" step="1000" required>
@@ -43,7 +50,9 @@
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
-            <div class="col-md-6">
+
+            {{-- inputan brand --}}
+        <div class="col-md-12">
                 <label for="brand" class="form-label">Brand</label>
                 <select class="form-select @error('category') is-invalid @enderror" aria-label="brand" id="brand" name="brand">
                     <option selected disabled>- Choose Brand -</option>
@@ -56,15 +65,16 @@
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
-            <div class="col-md-6">
-                <label for="rating" class="form-label">Rating</label>
-                <input type="number" class="form-control @error('category') is-invalid @enderror" id="rating" name="rating" min="0" max="5" required>
-                {{-- menampilkan tulisan error --}}
-                @error('category')
+
+            {{-- inputan gambar --}}
+            <div class="mb-3">
+                <label for="image" class="form-label">Product Image</label>
+                <input class="form-control @error('image') is-invalid @enderror" type="file" name="image" id="image" accept=".jpg, .jpeg, .png., .webp">
+                @error('image')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
-
+            
             <div class="col-12 mt-4 d-flex justify-content-between">
                 <button class="btn btn-primary" type="submit" value="Simpan">Simpan</button>
                 <a href="{{ route('product.index') }}" class="btn btn-danger">Kembali</a>

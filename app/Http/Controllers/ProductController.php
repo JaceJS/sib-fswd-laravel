@@ -6,6 +6,8 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -26,25 +28,41 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $products = Product::create([
+        $validator = Validator::make($request->all(), [
+            'category' => 'required',
+            'name' => 'required|string|min:3',
+            'price' => 'required|integer',
+            'sale_price' => 'required|integer',
+            'brand' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+
+        // ubah nama file gambar dengan angka random
+        $imageName = time() . '.' . $request->image->extension();
+
+        // simpan file ke folder public/product
+        Storage::putFileAs('public/product', $request->image, $imageName);
+
+        $product = Product::create([
             'category_id' => $request->category,
             'name' => $request->name,
             'price' => $request->price,
             'sale_price' => $request->sale_price,
             'brands' => $request->brand,
-            'rating' => $request->rating,
-        ]);
+            'image' => $imageName,
+        ]);        
 
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')->with('success', 'Product Berhasil Ditambahkan.');
     }
 
     public function edit($id)
-    {
-        // $products = Product::find($id);
-        // ambil data product berdasarkan id
+    {                
         $products = Product::where('id', $id)->with('category')->first();
-
-        // ambil data brand dan category sebagai isian di pilihan (select)
+        
         $brands = Brand::all();
         $categories = Category::all();
 

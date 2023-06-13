@@ -6,16 +6,19 @@
 
         <div class="card mb-4">
             <div class="card-body">
-                <table id="datatablesSimple">
+                <div class="pb-3">
+                    <a href="{{ route('product.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
+                </div> 
+                <table id="dataTable" class="table table-striped">
                     <thead>
-                        <tr>
+                        <tr class="table-dark">
                             <th>#</th>
                             <th>Categories</th>
                             <th>Name</th>
                             <th>Price</th>
                             <th>Sale Price</th>
-                            <th>Brand</th>
-                            <th>Rating</th>                            
+                            <th>Image</th>
+                            <th>Status</th>                            
                             <th>Action</th>                            
                         </tr>
                     </thead>
@@ -25,9 +28,15 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $product->category->name }}</td>
                             <td>{{ $product->name }}</td>
-                            <td>{{ $product->price }}</td>
-                            <td>{{ $product->sale_price }}</td>
-                            <td>{{ $product->brands }}</td>  
+                            <td>Rp. {{ number_format($product->price, 0, 2) }}</td>
+                            <td>Rp. {{ number_format($product->sale_price, 0, 2) }}</td>
+                            <td>
+                                @if ($product->image == null)
+                                    <small><em>No Image</em></span>
+                                @else
+                                    <img src="{{ asset('storage/product/' . $product->image) }}" alt="{{ $product->name }}" style="max-width: 50px">
+                                @endif
+                            </td>  
                             <td>{{ $product->rating }}</td>  
                             <td>
                                 <form onsubmit="return confirm('Are you sure? ');" action="{{ route('product.destroy', $product->id) }}" method="POST">
@@ -42,10 +51,7 @@
                         </tr>
                         @endforeach
                     </tbody>
-                </table>
-                <div class="container text-center">
-                    <a href="{{ route('product.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
-                </div> 
+                </table>                
             </div>
         </div>
     </div>
