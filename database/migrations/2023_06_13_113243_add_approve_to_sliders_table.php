@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('sliders', function (Blueprint $table) {
-            $table->boolean('approve')->default(0)->after('image');
+            $table->boolean('approve')->nullable()->after('image');
         });
     }
 

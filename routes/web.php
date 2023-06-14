@@ -35,8 +35,10 @@ Route::post('/logout', [LoginController::class, "logout"]) -> name('logout');
 Route::get('/register', [RegisterController::class, "index"]) -> name('register.index')->middleware('guest');
 Route::post('/register', [RegisterController::class, "store"]) -> name('register.store');
 
-Route::middleware('auth')->group(function() {
+// Show Product
+Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('product.show');
 
+Route::middleware('auth')->group(function() {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, "dashboard"]) -> name('dashboard')->middleware('auth');
 

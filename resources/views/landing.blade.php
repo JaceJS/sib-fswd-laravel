@@ -18,7 +18,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="#!">
-                    <img src="{{ asset('storage/logo.png') }}" alt="Logo" style="max-width: 100px">                    
+                    <img src="{{ asset('storage/logo.png') }}" alt="Logo" style="max-width: 100px">
                 </a> 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -60,8 +60,8 @@
                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}" data-bs-interval="3000">
                         <img src="{{ asset('storage/slider/' . $slider->image) }}" class="d-block w-100" alt="{{ $slider->image }}">
                         <div class="carousel-caption d-none d-md-block">
-                            <h5 class="text-dark">{{ $slider->title }}</h5>
-                            <p class="text-dark">{{ $slider->caption }}</p>
+                            <h5 class="text-light">{{ $slider->title }}</h5>
+                            <p class="text-light">{{ $slider->caption }}</p>
                         </div>
                     </div>
                 @endforeach
@@ -76,8 +76,22 @@
             </button>
             </div>
         <!-- Section-->
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
+        <section>
+            <div class="container px-4 px-lg-5 mt-2">
+                <form action="{{ route('landing') }}" method="GET">
+                    @csrf
+                    <div class="row g-3 my-5">
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" placeholder="Min" name="min" value="{{ old('min') }}">
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" placeholder="Max" name="max" value={{ old('max') }}>
+                        </div>
+                        <div class="col-sm-3">
+                            <button type="submit" class="btn btn-primary">Terapkan</button>
+                        </div>
+                    </div>
+                </form>
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     @foreach ($products as $product)
                         <div class="col mb-5">
@@ -88,8 +102,11 @@
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <!-- Product name-->
-                                        <h5 class="fw-bolder">{{ $product->name }}</h5>
-
+                                        <a href="{{ route('product.show', ['id' => $product->id]) }}" style="text-decoration: none" class="text-dark">
+                                            <small class="text-strong">{{ $product->category->name }}</small>
+                                            <h5 class="fw-bolder">{{ $product->name }}</h5>
+                                        </a>
+                                        
                                         <!-- Product price-->
                                         Rp. {{ number_format($product->price, 0, 2) }}
                                     </div>
@@ -105,9 +122,7 @@
             </div>
         </section>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; JaceInstrumental 2023</p></div>
-        </footer>
+        @include('includes.footer')
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

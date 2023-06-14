@@ -1,12 +1,3 @@
-<footer class="py-4 bg-light mt-auto">
-    <div class="container-fluid px-4">
-        <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">Copyright &copy; JaceInstrumental 2023</div>
-            <div>
-                <a href="#">Privacy Policy</a>
-                &middot;
-                <a href="#">Terms &amp; Conditions</a>
-            </div>
-        </div>
-    </div>
+<footer class="py-4" style="background-color: #fff3e8">
+    <div class="container"><p class="m-0 text-center text-muted">Copyright &copy; JaceInstrumental 2023</p></div>
 </footer>

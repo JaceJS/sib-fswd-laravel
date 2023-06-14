@@ -23,7 +23,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="image" class="form-label">Slider Image <small>(optional)</small> </label>
+                            <label for="image" class="form-label">Slider Image</label>
                             <input class="form-control" type="file" name="image" id="image" accept=".jpg, .jpeg, .png., .webp">
                         </div>
                         

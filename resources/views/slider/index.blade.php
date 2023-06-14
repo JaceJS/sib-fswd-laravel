@@ -55,7 +55,7 @@
                                     @if (Auth::user()->role->name == 'Admin')     
                                         <td>
                                             <div class="d-flex">
-                                                <form class="me-1" onsubmit="return confirm('Approve product? ');" action="{{ route('slider.approve', $slider->id) }}" method="POST">
+                                                <form class="me-1" onsubmit="return confirm('Approve slider? ');" action="{{ route('slider.approve', $slider->id) }}" method="POST">
                                                     @csrf
                                                     @method('PUT')
                                                     <button type="submit" class="btn btn-success btn-sm">
@@ -64,7 +64,7 @@
                                                         </svg>
                                                     </button>
                                                 </form>
-                                                <form onsubmit="return confirm('Reject product? ');" action="{{ route('slider.reject', $slider->id) }}" method="POST">
+                                                <form onsubmit="return confirm('Reject slider? ');" action="{{ route('slider.reject', $slider->id) }}" method="POST">
                                                     @csrf
                                                     @method('PUT')
                                                     <button type="submit" class="btn btn-danger btn-sm">
