@@ -71,7 +71,7 @@ class SliderController extends Controller
             ]);
             
         } else {            
-            // update data sliders hnaya untuk title dan caption
+            // update data sliders hanya untuk title dan caption
             Slider::where('id', $id)->update([
                 'title' => $request->title,
                 'caption' => $request->caption,
@@ -83,13 +83,41 @@ class SliderController extends Controller
 
     public function destroy($id)
     {        
-        // ambil data product berdasarkan id
+        // ambil data slider berdasarkan id
         $slider = Slider::find($id);
         
-        // hapus data gambar dan product
+        // hapus data gambar dan slider
         Storage::delete('public/slider/'.$slider->image);
         $slider->delete();
 
         return redirect()->route('slider.index');
+    }
+
+    public function approve($id)
+    {
+        // ambil data slider berdasarkan id
+        $slider = Slider::find($id);
+
+        // update data slider
+        $slider->update([
+            'approve' => '1',
+        ]);        
+
+        // redirect ke halaman slider.index
+        return redirect()->back()->with('success', 'slider approved successfully.');
+    }
+
+    public function reject($id)
+    {
+        // ambil data slider berdasarkan id
+        $slider = Slider::find($id);
+
+        // update data slider
+        $slider->update([
+            'approve' => '0',
+        ]);
+
+        // redirect ke halaman slider.index
+        return redirect()->back()->with('success', 'slider rejected successfully.');
     }
 }

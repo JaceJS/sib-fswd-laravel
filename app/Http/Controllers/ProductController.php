@@ -124,7 +124,7 @@ class ProductController extends Controller
         // update data product
         $product->update([
             'approve' => '1',
-        ]);
+        ]);        
 
         // redirect ke halaman product.index
         return redirect()->back()->with('success', 'Product approved successfully.');

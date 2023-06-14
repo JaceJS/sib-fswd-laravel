@@ -9,17 +9,20 @@
                 <div class="pb-3">
                     <a href="{{ route('product.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
                 </div> 
-                <table id="dataTable" class="table table-striped">
+                <table id="dataTable" class="table table-striped table-hover">
                     <thead>
                         <tr class="table-dark">
                             <th>#</th>
-                            <th>Categories</th>
+                            <th>Category</th>
                             <th>Name</th>
                             <th>Price</th>
                             <th>Sale Price</th>
                             <th>Image</th>
                             <th>Status</th>                            
-                            <th>Action</th>                            
+                            <th>Product Action</th>
+                            @if (Auth::user()->role->name == 'Admin')                                                        
+                                <th>Status Action</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -40,6 +43,8 @@
                             <td>
                                 @if ($product->approve)
                                     <small class="text-success">Approved</small>
+                                @elseif($product->approve === NULL)
+                                    <small class="text-warning">Pending</small>
                                 @else
                                     <small class="text-danger">Rejected</small>
                                 @endif
@@ -53,7 +58,31 @@
                                     
                                     <button type="submit" class="btn btn-sm btn-danger">Hapus</button>                                  
                                 </form>
-                            </td>                          
+                            </td>   
+                            @if (Auth::user()->role->name == 'Admin')     
+                                <td>
+                                    <div class="d-flex">
+                                        <form class="me-1" onsubmit="return confirm('Approve product? ');" action="{{ route('product.approve', $product->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit" class="btn btn-success btn-sm">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                                    <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                                                </svg>
+                                            </button>
+                                        </form>
+                                        <form onsubmit="return confirm('Reject product? ');" action="{{ route('product.reject', $product->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>                                                   
+                            @endif                       
                         </tr>
                         @endforeach
                     </tbody>
