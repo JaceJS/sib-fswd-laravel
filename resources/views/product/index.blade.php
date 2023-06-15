@@ -19,8 +19,10 @@
                             <th>Sale Price</th>
                             <th>Brand</th>
                             <th>Image</th>
-                            <th>Status</th>                            
-                            <th>Product Action</th>
+                            <th>Status</th>
+                            @if (Auth::user()->role->name == 'Admin' || Auth::user()->role->name == 'Staff')                            
+                                <th>Product Action</th>
+                            @endif
                             @if (Auth::user()->role->name == 'Admin')                                                        
                                 <th>Status Action</th>
                             @endif
@@ -51,16 +53,18 @@
                                     <small class="text-danger">Rejected</small>
                                 @endif
                             </td>  
-                            <td>
-                                <form onsubmit="return confirm('Are you sure? ');" action="{{ route('product.destroy', $product->id) }}" method="POST">
-                                    <a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                    
-                                    @csrf
-                                    @method('DELETE')
-                                    
-                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>                                  
-                                </form>
-                            </td>   
+                            @if (Auth::user()->role->name == 'Admin' || Auth::user()->role->name == 'Staff')
+                                <td>                                
+                                    <form onsubmit="return confirm('Are you sure? ');" action="{{ route('product.destroy', $product->id) }}" method="POST">
+                                        <a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        
+                                        @csrf
+                                        @method('DELETE')
+                                        
+                                        <button type="submit" class="btn btn-sm btn-danger">Hapus</button>                                  
+                                    </form>                                                                    
+                                </td>   
+                            @endif
                             @if (Auth::user()->role->name == 'Admin')     
                                 <td>
                                     <div class="d-flex">
