@@ -17,6 +17,7 @@
                             <th>Name</th>
                             <th>Price</th>
                             <th>Sale Price</th>
+                            <th>Brand</th>
                             <th>Image</th>
                             <th>Status</th>                            
                             <th>Product Action</th>
@@ -32,7 +33,8 @@
                             <td>{{ $product->category->name }}</td>
                             <td>{{ $product->name }}</td>
                             <td>Rp. {{ number_format($product->price, 0, 2) }}</td>
-                            <td>Rp. {{ number_format($product->sale_price, 0, 2) }}</td>
+                            <td>Rp. {{ number_format($product->sale_price, 0, 2) }}</td>                            
+                            <td>{{ $product->brands }}</td>
                             <td>
                                 @if ($product->image == null)
                                     <small><em>No Image</em></span>
