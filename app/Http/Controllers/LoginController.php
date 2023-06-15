@@ -22,7 +22,7 @@ class LoginController extends Controller
     {
 
         $validator = $request->validate([
-            'email' => 'required|email:dns', // dns agar belakang email harus ada .com, .id, dsb.
+            'email' => 'required|email', // dns agar belakang email harus ada .com, .id, dsb.
             'password' => 'required',
         ]);                    
 
