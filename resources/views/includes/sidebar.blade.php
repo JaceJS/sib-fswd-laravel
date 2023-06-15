@@ -47,7 +47,7 @@
                 </div>   
             @endif  
             
-            @if (Auth::user()->role->name == 'User')
+            @if (Auth::user()->role->name == 'Customer')
                 <a class="nav-link" href="{{ route('product.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                     Product
