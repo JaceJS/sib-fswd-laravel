@@ -99,21 +99,22 @@
                                 <!-- Product image-->
                                 <img class="card-img-top" src="{{ asset('storage/product/' . $product->image) }}" alt="{{ $product->image }}" />
                                 <!-- Product details-->
-                                <div class="card-body p-4">
+                                <div class="card-body p-4">                                    
                                     <div class="text-center">
                                         <!-- Product name-->
-                                        <a href="{{ route('product.show', ['id' => $product->id]) }}" style="text-decoration: none" class="text-dark">
+                                        <div style="text-decoration: none" class="text-dark">
                                             <small class="text-strong">{{ $product->category->name }}</small>
                                             <h5 class="fw-bolder">{{ $product->name }}</h5>
-                                        </a>
+                                        </div>
                                         
                                         <!-- Product price-->
                                         Rp. {{ number_format($product->price, 0, 2) }}
                                     </div>
                                 </div>
                                 <!-- Product actions-->
-                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex justify-content-center">
+                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ route('product.show', ['id' => $product->id]) }}">Detail</a></div>
+                                    {{-- <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div> --}}
                                 </div>
                             </div>
                         </div>
