@@ -17,14 +17,16 @@ class LandingController extends Controller
         // mengambil data slider dengan approve = 1
         $sliders = Slider::where('approve', '1')->get();                
 
+        // mengambil nama category
         if ($request->category) {
             $products = Product::where('approve', 1)->with('category')->whereHas('category', function ($query) use ($request) {
                 $query->where('name', $request->category);
             })->get();
+        // mengambil nilai harga min dan max
         } else if ($request->min && $request->max) {
             $products = Product::where('price', '>=', $request->min)->where('price', '<=', $request->max)->get();
         } else {
-            // mengambil 8 data produk secara acak
+            // mengambil produk secara acak dengan batas 8 produk
             $products = Product::where('approve', 1)->inRandomOrder()->limit(8)->get();
         }
 
