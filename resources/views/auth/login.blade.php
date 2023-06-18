@@ -39,8 +39,13 @@
               </div>
 
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password">
                 <label for="password">Password</label>
+                @error('password')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                @enderror
               </div>
               
               <div class="col-12 mt-3 d-flex justify-content-center">

@@ -8,9 +8,14 @@
                 <form action="{{ route('role.store') }}" method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
                     @csrf
 
-                    <div class="col-md-12">
+                    <div class="col-md-12">                        
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}">
+                        @error('name')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="col-12 mt-4 d-flex justify-content-between">
                         <button class="btn btn-primary" type="submit" value="Simpan">Simpan</button>

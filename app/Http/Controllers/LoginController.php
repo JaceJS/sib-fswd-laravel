@@ -22,26 +22,22 @@ class LoginController extends Controller
     {
 
         $validator = $request->validate([
-            'email' => 'required|email', // dns agar belakang email harus ada .com, .id, dsb.
+            'email' => 'required|email',
             'password' => 'required',
         ]);                    
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password]))
         {
-            $request->session()->regenerate(); // meregenerate session baru untuk keamanan
-            
+            $request->session()->regenerate(); // meregenerate session baru untuk keamanan            
             return redirect()->intended('dashboard');
-        }        
-        
-        return back()->with('loginError', 'Email atau password salah');               
+        }                
+        return back()->with('loginError', 'Invalid email ord password');               
     }
 
     public function logout(Request $request)
         {
             Auth::logout();        
-
             $request->session()->invalidate();        
-
             $request->session()->regenerateToken();        
 
             return redirect('/');

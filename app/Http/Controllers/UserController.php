@@ -6,6 +6,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -26,6 +27,20 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [            
+            'name' => 'required|string',
+            'role' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:8',                     
+            'phone' => 'required|digits_between:10,12',
+        ]);
+
+        // mengembalikan error jika data tidak valid
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator->errors())
+                ->withInput();
+        }
         
         $users = User::create([
             'role_id' => $request->role,

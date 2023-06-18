@@ -51,8 +51,11 @@ class ProductController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
+        // mengembalikan error jika data tidak valid
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator->errors())->withInput();
+            return redirect()->back()
+                ->withErrors($validator->errors())
+                ->withInput();
         }
 
         // ubah nama file gambar dengan angka random
@@ -70,7 +73,7 @@ class ProductController extends Controller
             'image' => $imageName,
         ]);        
 
-        return redirect()->route('product.index')->with('success', 'Product Berhasil Ditambahkan.');
+        return redirect()->route('product.index')->with('success', 'Product Succesfully Added.');
     }
 
     public function edit($id)
@@ -103,7 +106,7 @@ class ProductController extends Controller
             ]);
             
         } else {
-            // ambil data product berdasarkan id
+            // Mengambil data product berdasarkan id
             $products = Product::find($id);        
 
             $products->update([
@@ -120,10 +123,10 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        // ambil data product berdasarkan id
+        // Mengambil data product berdasarkan id
         $product = Product::find($id);
         
-        // hapus data gambar dan product
+        // hapus data gambar dan product berdasarkan id
         Storage::delete('public/product/'.$product->image);
         $product->delete();
                 
@@ -132,7 +135,7 @@ class ProductController extends Controller
 
     public function approve($id)
     {
-        // ambil data product berdasarkan id
+        // Mengambil data product berdasarkan id
         $product = Product::find($id);
 
         // update data product
@@ -146,7 +149,7 @@ class ProductController extends Controller
 
     public function reject($id)
     {
-        // ambil data product berdasarkan id
+        // Mengambil data product berdasarkan id
         $product = Product::find($id);
 
         // update data product

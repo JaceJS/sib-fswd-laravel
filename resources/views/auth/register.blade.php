@@ -17,23 +17,47 @@
                             @csrf
 
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" name="name" placeholder="Name">
-                                <label for="floatingInput">Name</label>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" placeholder="Name">
+                                <label for="name">Name</label>
+                                @error('name')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
+
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
-                                <label for="floatingInput">Email</label>
+                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" placeholder="name@example.com">
+                                <label for="email">Email</label>
+                                @error('email')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
+
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
-                                <label for="floatingPassword">Password</label>
+                                <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password">
+                                <label for="password">Password</label>
+                                @error('password')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
+
                             <div class="form-floating mb-3">
-                                <input type="tel" class="form-control" id="floatingInput" name="phone" placeholder="08123" required>
-                                <label for="floatingInput" class="form-label">Phone</label>
+                                <input type="tel" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{ old('phone') }}" placeholder="081234567890">
+                                <label for="phone" class="form-label">Phone</label>
+                                @error('phone')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
+
                             <div class="col-12 mt-3 d-flex justify-content-center">
-                                <input class="btn btn-primary mt-3" type="submit" value="Register" name="register"></input>
+                                <input class="btn btn-primary mt-3" type="submit" value="Register" name="register">
                             </div>
                         </form>
                         <small class="d-block mt-3">Already have an account? <a href="{{ route('login.index') }}">Login</a></small>
