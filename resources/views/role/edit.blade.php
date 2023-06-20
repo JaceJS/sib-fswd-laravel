@@ -17,8 +17,8 @@
                             </div>
                         </div>
                         <div class="col-12 mt-4 d-flex justify-content-between">
-                            <button class="btn btn-primary" type="submit" value="Simpan">Simpan</button>
-                            <a href="{{ route('role.index') }}" class="btn btn-danger">Kembali</a>
+                            <button class="btn btn-success" type="submit" value="Simpan">Create</button>
+                            <a href="{{ route('role.index') }}" class="btn btn-danger">Back</a>
                         </div>                    
                 </form>
             </div>
