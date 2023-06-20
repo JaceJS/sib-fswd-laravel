@@ -25,6 +25,11 @@ use Illuminate\Support\Facades\Route;
 
 // Landing Page
 Route::get('/', [LandingController::class, "index"]) -> name('landing');
+Route::get('/about', [LandingController::class, "about"]) -> name('about');
+Route::get('/contact', [LandingController::class, "contact"]) -> name('contact');
+
+// Show Product
+Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('product.show');
 
 // Login
 Route::get('/login', [LoginController::class, "index"]) -> name('login.index')->middleware('guest');
@@ -34,9 +39,6 @@ Route::post('/logout', [LoginController::class, "logout"]) -> name('logout');
 // Register
 Route::get('/register', [RegisterController::class, "index"]) -> name('register.index')->middleware('guest');
 Route::post('/register', [RegisterController::class, "store"]) -> name('register.store');
-
-// Show Product
-Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('product.show');
 
 Route::middleware('auth')->group(function() {
     // Dashboard

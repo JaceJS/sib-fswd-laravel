@@ -32,4 +32,18 @@ class LandingController extends Controller
 
         return view('landing', compact('sliders', 'products', 'categories'));
     }
+
+    public function about(){
+        // mengambil semua data dari category
+        $categories = Category::all();
+
+        return view('about', compact('categories'));
+    }
+
+    public function contact(){
+        // mengambil semua data dari category
+        $categories = Category::all();
+
+        return view('contact', compact('categories'));
+    }
 }

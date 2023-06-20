@@ -29,7 +29,6 @@
                 @endif
                 
                 <div class="col-md-6">
-                    {{-- <div class="small mb-1">SKU: BST-498</div> --}}
                     <h1 class="display-5 fw-bolder">{{ $product->name }}</h1>
                     <div class="fs-5 mb-5">
                         <span class="text-decoration-line-through">Rp.{{ number_format($product->price, 0) }}</span>
