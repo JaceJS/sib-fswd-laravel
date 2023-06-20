@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,10 @@ class LoginController extends Controller
             return redirect()->route('dashboard');
         }
 
-        return view('auth.login');
+        // mengambil data category
+        $categories = Category::all();
+
+        return view('auth.login', compact('categories'));
     }
 
     public function authenticate(Request $request)
@@ -31,7 +35,7 @@ class LoginController extends Controller
             $request->session()->regenerate(); // meregenerate session baru untuk keamanan            
             return redirect()->intended('dashboard');
         }                
-        return back()->with('loginError', 'Invalid email ord password');               
+        return back()->with('loginError', 'Invalid email or password');               
     }
 
     public function logout(Request $request)

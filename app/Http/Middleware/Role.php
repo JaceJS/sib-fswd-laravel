@@ -24,13 +24,5 @@ class Role
         }
 
         return abort(403, 'Unauthorized action');
-
-
-
-        // if ($request->user()->role->name != $role) {
-        //     return abort(403, 'Unauthorized action');
-        // }
-
-        // return $next($request);
     }
 }

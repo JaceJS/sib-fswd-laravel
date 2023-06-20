@@ -4,13 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Register</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->    
+    <link href="{{ asset("css/landing.css") }}" rel="stylesheet" />
     </head>
 
     <body>
-        <div class="container vh-100 d-flex align-items-center justify-content-center">
+        {{-- Navigation --}}
+        @include('includes.landing.navbar')
+
+        {{-- Section --}}
+        <div class="container min-vh-100 d-flex flex-column align-items-center justify-content-center">
             <div class="col-md-6">
-                <div class="card shadow p-3 mb-5 mx-auto bg-body-tertiary rounded" style="max-width: 28rem">
+                <div class="card shadow p-3 mb-5 mx-auto bg-body-tertiary rounded" style="max-width: 28rem; background-color: #fff3e8;">
                     <h3 class="text-center">Register</h3>
                     <div class="card-body">
                         <form action='{{ route('register.store') }}' method="POST">
@@ -57,7 +64,7 @@
                             </div>
 
                             <div class="col-12 mt-3 d-flex justify-content-center">
-                                <input class="btn btn-primary mt-3" type="submit" value="Register" name="register">
+                                <input class="btn text-white mt-3" style="background-color: #742317;" type="submit" value="Register" name="register">
                             </div>
                         </form>
                         <small class="d-block mt-3">Already have an account? <a href="{{ route('login.index') }}">Login</a></small>

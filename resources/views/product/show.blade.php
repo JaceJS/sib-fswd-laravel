@@ -17,24 +17,7 @@
 
 <body>
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="#!">
-                <img src="{{ asset('storage/logo.png') }}" alt="Logo" style="max-width: 100px">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex">
-                    <button class="btn btn-outline-dark" type="submit">
-                        <i class="bi-cart-fill me-1"></i>
-                        Cart
-                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </nav>
+    @include('includes.landing.navbar')
     <!-- Product section-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 my-5">
@@ -55,12 +38,11 @@
                     <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum ex nesciunt ducimus hic ut rerum voluptatibus at consequatur 
                         dolores molestiae itaque reprehenderit, quaerat nemo aliquid ullam molestias enim in harum!</p>
                     <div class="d-flex justify-content-between">
-                        <div class="d-flex">
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                Add to cart
-                            </button>
+                        <div class="d-flex">                            
+                            <a href="#" class="btn btn-success">
+                                <i class="bi bi-whatsapp me-2"></i>
+                                Order Now
+                            </a>                              
                         </div>
                         <a href="{{ route('landing') }}" class="btn btn-danger">Kembali</a>
                     </div>
@@ -92,8 +74,15 @@
                                 </div>
                             </div>
                             <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">                                                                                               
+                                <a class="btn btn-outline-dark mt-auto mb-2 w-100" href="{{ route('product.show', ['id' => $product->id]) }}">
+                                    <i class="bi bi-info-circle me-2"></i>
+                                    Detail
+                                </a>
+                                <a href="#" class="btn btn-outline-success w-100">
+                                    <i class="bi bi-whatsapp me-2"></i>
+                                    Order Now
+                                </a>                                  
                             </div>
                         </div>
                     </div>

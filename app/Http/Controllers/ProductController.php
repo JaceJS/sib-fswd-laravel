@@ -20,12 +20,15 @@ class ProductController extends Controller
 
     public function show($id)
     {
+        $categories = Category::all();
+
         $product = Product::where('id', $id)->with('category')->first();
 
+        // mengambil category yang sama
         $related = Product::where('category_id', $product->category->id)->inRandomOrder()->limit(4)->get();
 
         if ($product) {
-            return view('product.show', compact('product', 'related'));
+            return view('product.show', compact('product', 'related', 'categories'));
         } else {
             abort(404);
         }

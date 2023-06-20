@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -12,7 +13,10 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        return view('auth.register');
+        // mengambil data category
+        $categories = Category::all();
+
+        return view('auth.register', compact('categories'));
     }
 
     public function store(Request $request)

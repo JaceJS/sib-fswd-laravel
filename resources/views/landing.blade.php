@@ -15,38 +15,7 @@
     </head>
     <body>
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">
-                    <img src="{{ asset('storage/logo.png') }}" alt="Logo" style="max-width: 120px">
-                </a> 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>                        
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                @foreach ($categories as $category)
-                                    <li><a class="dropdown-item" href="{{ route('landing') }}">{{ $category->name }}</a></li>                                    
-                                @endforeach
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <a href="#" class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </a>
-                        <a href="{{ route('login.index') }}" class="btn btn-outline-dark ms-2" type="submit">
-                            <i class="bi-person-fill me-1"></i>
-                            Dashboard                            
-                        </a>
-                    </form>
-                </div>
-            </div>
-        </nav>
+        @include('includes.landing.navbar')
         <!-- Carousels-->
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -79,16 +48,16 @@
         <section>
             <div class="container px-4 px-lg-5 mt-2">
                 <form action="{{ route('landing') }}" method="GET">
-                    @csrf
+                    @csrf                    
                     <div class="row g-3 my-5">
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" placeholder="Min" name="min" value="{{ old('min') }}">
+                            <input type="text" class="form-control" placeholder="Min Price" name="min" value="{{ old('min') }}">
                         </div>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" placeholder="Max" name="max" value={{ old('max') }}>
+                            <input type="text" class="form-control" placeholder="Max Price" name="max" value={{ old('max') }}>
                         </div>
                         <div class="col-sm-3">
-                            <button type="submit" class="btn text-white" style="background-color: #742317;">Terapkan</button>
+                            <button type="submit" class="btn text-white" style="background-color: #742317;">Search</button>
                         </div>
                     </div>
                 </form>
@@ -112,9 +81,15 @@
                                     </div>
                                 </div>
                                 <!-- Product actions-->
-                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex justify-content-center">
-                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ route('product.show', ['id' => $product->id]) }}">Detail</a></div>
-                                    {{-- <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div> --}}
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <a class="btn btn-outline-dark mt-auto mb-2 w-100" href="{{ route('product.show', ['id' => $product->id]) }}">
+                                        <i class="bi bi-info-circle me-2"></i>
+                                        Detail
+                                    </a>
+                                    <a href="#" class="btn btn-outline-success w-100">
+                                        <i class="bi bi-whatsapp me-2"></i>
+                                        Order Now
+                                    </a>                                       
                                 </div>
                             </div>
                         </div>
