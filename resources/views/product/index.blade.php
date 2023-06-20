@@ -6,9 +6,11 @@
 
         <div class="card mb-4">
             <div class="card-body">
-                <div class="pb-3">
-                    <a href="{{ route('product.create') }}" class="btn btn-primary btn-md">Create New</a>        
-                </div> 
+                @if (Auth::user()->role->name == 'Admin' || Auth::user()->role->name == 'Staff')                            
+                    <div class="pb-3">
+                        <a href="{{ route('product.create') }}" class="btn text-white btn-md" style="background-color: #742317;">Create New</a>        
+                    </div> 
+                @endif
                 <table id="dataTable" class="table table-striped table-hover">
                     <thead>
                         <tr class="table-dark">

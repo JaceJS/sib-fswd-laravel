@@ -7,7 +7,7 @@
         <div class="card mb-4">
             <div class="card-body">
                 <div class="pb-3">
-                    <a href="{{ route('category.create') }}" class="btn btn-primary btn-md">Create New</a>        
+                    <a href="{{ route('category.create') }}" class="btn text-white btn-md" style="background-color: #742317;">Create New</a>        
                 </div>  
                 <table id="dataTable" class="table table-striped">
                     <thead>
