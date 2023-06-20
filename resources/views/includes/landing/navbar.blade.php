@@ -27,8 +27,12 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('login.index') }}" class="btn login-btn text-white ms-2" style="background-color: #742317;">
-                        <i class="bi bi-box-arrow-in-right"></i>
-                        Login                     
+                        <i class="bi bi-box-arrow-in-right me-1"></i>
+                        @if(Auth::user())
+                            Dashboard
+                        @else 
+                            Login                                         
+                        @endif
                     </a>
                 </li>
             </ul>                    
