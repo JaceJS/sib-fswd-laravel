@@ -61,8 +61,8 @@
                                 <h5 class="fw-bolder">{{ $product->name }}</h5>
                             </div>
                             
-                            <!-- Product price-->
-                            Rp. {{ number_format($product->price, 0, 2) }}
+                            <!-- Product price-->                                                        
+                            <span>Rp.{{ number_format($product->sale_price, 0, 2) }}</span>                                                                                                                
                         </div>
                     </div>
                     <!-- Product actions-->
