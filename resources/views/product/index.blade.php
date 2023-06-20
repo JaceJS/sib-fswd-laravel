@@ -7,7 +7,7 @@
         <div class="card mb-4">
             <div class="card-body">
                 <div class="pb-3">
-                    <a href="{{ route('product.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
+                    <a href="{{ route('product.create') }}" class="btn btn-primary btn-md">Create New</a>        
                 </div> 
                 <table id="dataTable" class="table table-striped table-hover">
                     <thead>
@@ -55,13 +55,17 @@
                             </td>  
                             @if (Auth::user()->role->name == 'Admin' || Auth::user()->role->name == 'Staff')
                                 <td>                                
-                                    <form onsubmit="return confirm('Are you sure? ');" action="{{ route('product.destroy', $product->id) }}" method="POST">
-                                        <a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    <form class="text-center" onsubmit="return confirm('Are you sure? ');" action="{{ route('product.destroy', $product->id) }}" method="POST">
+                                        <a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning btn-sm">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
                                         
                                         @csrf
                                         @method('DELETE')
                                         
-                                        <button type="submit" class="btn btn-sm btn-danger">Hapus</button>                                  
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <i class="bi bi-trash"></i>    
+                                        </button>                                  
                                     </form>                                                                    
                                 </td>   
                             @endif

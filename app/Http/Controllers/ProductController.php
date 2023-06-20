@@ -51,7 +51,7 @@ class ProductController extends Controller
             'price' => 'required|integer',
             'sale_price' => 'required|integer',
             'brand' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         // mengembalikan error jika data tidak valid
@@ -61,19 +61,32 @@ class ProductController extends Controller
                 ->withInput();
         }
 
-        // ubah nama file gambar dengan angka random
-        $imageName = time() . '.' . $request->image->extension();
+        if ($request->image) {
+            // ubah nama file gambar dengan angka random
+            $imageName = time() . '.' . $request->image->extension();
 
-        // simpan file ke folder public/product
-        Storage::putFileAs('public/product', $request->image, $imageName);
+            // simpan file ke folder public/product
+            Storage::putFileAs('public/product', $request->image, $imageName);
+
+            $product = Product::create([
+                'category_id' => $request->category,
+                'name' => $request->name,
+                'price' => $request->price,
+                'sale_price' => $request->sale_price,
+                'brands' => $request->brand,
+                'image' => $imageName,
+            ]);        
+
+            return redirect()->route('product.index')->with('success', 'Product Succesfully Added.');
+        }
+        
 
         $product = Product::create([
             'category_id' => $request->category,
             'name' => $request->name,
             'price' => $request->price,
             'sale_price' => $request->sale_price,
-            'brands' => $request->brand,
-            'image' => $imageName,
+            'brands' => $request->brand,            
         ]);        
 
         return redirect()->route('product.index')->with('success', 'Product Succesfully Added.');
@@ -84,7 +97,7 @@ class ProductController extends Controller
         $products = Product::where('id', $id)->with('category')->first();
         
         $brands = Brand::all();
-        $categories = Category::all();
+        $categories = Product::all();
 
         return view('product.edit', compact('products', 'brands', 'categories'));
     }

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Shop Item</title>
+    <title>Item Detail</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
@@ -44,7 +44,7 @@
                                 Order Now
                             </a>                              
                         </div>
-                        <a href="{{ route('landing') }}" class="btn btn-danger">Kembali</a>
+                        <a href="{{ route('landing') }}" class="btn btn-danger">Back</a>
                     </div>
                 </div>
             </div>

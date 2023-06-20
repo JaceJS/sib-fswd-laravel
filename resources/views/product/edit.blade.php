@@ -7,39 +7,68 @@
             @csrf
             @method('PUT')
 
+            {{-- inputan category --}}
             <div class="col-md-6">
                 <label for="category" class="form-label">Category</label>
-                <select class="form-select" aria-label="category" id="category" name="category" required>
-                    <option selected disabled>- Choose Category -</option>               
+                <select class="form-select @error('category') is-invalid @enderror" aria-label="category" id="category" name="category" required>
+                    <option selected disabled>- Choose Category -</option>
                     @foreach ($categories as $cat)
-                        <option value="{{ $cat->id }}" {{ $products->category_id == $cat->id ? 'selected' : '' }}>{{ $cat->name }}</option>
+                        <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                     @endforeach
                 </select>
+                {{-- menampilkan tulisan error --}}
+                @error('category')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
+
+            {{-- inputan nama --}}
             <div class="col-md-6">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" value={{ $products->name }} required>
-            </div>            
+                <input type="text" class="form-control @error('category') is-invalid @enderror" id="name" name="name" value={{ $products->name }}>
+                {{-- menampilkan tulisan error --}}
+                @error('category')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div> 
+
+            {{-- inputan price --}}
             <div class="col-md-6">
                 <label for="price" class="form-label">Price</label>
-                <input type="number" class="form-control" id="price" name="price" min="0" step="1000" value={{ $products->price }} required>
-            </div>
+                <input type="number" class="form-control @error('category') is-invalid @enderror" id="price" name="price" value={{ $products->price }}  min="0" step="1000">
+                {{-- menampilkan tulisan error --}}
+                @error('category')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>            
+            
+            {{-- inputan sale price --}}
             <div class="col-md-6">
                 <label for="sale_price" class="form-label">Sale Price</label>
-                <input type="number" class="form-control" id="sale_price" name="sale_price" min="0" step="1000" value={{ $products->sale_price }} required>
+                <input type="number" class="form-control @error('category') is-invalid @enderror" id="sale_price" name="sale_price" value={{ $products->sale_price }} min="0" step="1000">
+                {{-- menampilkan tulisan error --}}
+                @error('category')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
-            <div class="col-md-6">
+
+            <div class="col-md-12">
                 <label for="brand" class="form-label">Brand</label>
                 <select class="form-select" aria-label="brand" id="brand" name="brand">
                     <option selected disabled>- Choose Brand -</option>
                     @foreach ($brands as $brand)
-                    <option value="{{ $brand->id }}" {{ $products->brand == $brand->id ? 'selected' : '' }}>{{ $brand->name }}</option>
+                        <option value="{{ $brand->name }}" {{ $products->brand == $brand->id ? 'selected' : '' }}>{{ $brand->name }}</option>
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-6">
-                <label for="rating" class="form-label">Rating</label>
-                <input type="number" class="form-control" id="rating" name="rating" min="0" max="5" value={{ $products->rating }} required>
+
+            {{-- inputan gambar --}}
+            <div class="mb-3">
+                <label for="image" class="form-label">Product Image</label>
+                <input class="form-control @error('image') is-invalid @enderror" type="file" name="image" id="image" accept=".jpg, .jpeg, .png., .webp">
+                @error('image')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
 
             <div class="col-12 mt-4 d-flex justify-content-between">

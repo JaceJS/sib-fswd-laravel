@@ -7,7 +7,7 @@
         <div class="card mb-4">
             <div class="card-body">
                 <div class="pb-3">
-                    <a href="{{ route('role.create') }}" class="btn btn-primary btn-md">Tambah Data</a>        
+                    <a href="{{ route('role.create') }}" class="btn btn-primary btn-md">Create New</a>        
                 </div> 
                 <table id="dataTable" class="table table-striped">
                     <thead>
@@ -24,12 +24,16 @@
                             <td>{{ $data->name }}</td>
                             <td>
                                 <form onsubmit="return confirm('Are you sure? ');" action="{{ route('role.destroy', $data->id) }}" method="POST">
-                                    <a href="{{ route('role.edit', $data->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                    
+                                    <a href="{{ route('role.edit', $data->id) }}" class="btn btn-warning btn-sm">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+
                                     @csrf
                                     @method('DELETE')
                                     
-                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>                                  
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>                                  
                                 </form>
                             </td>       
                         </tr>
