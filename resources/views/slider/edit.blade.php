@@ -28,7 +28,7 @@
                         </div>
                         
                         <div class="col-12 mt-4 d-flex justify-content-between">
-                            <button class="btn btn-success" type="submit" value="Simpan">Create</button>
+                            <button class="btn btn-success" type="submit" value="Simpan">Save</button>
                             <a href="{{ route('slider.index') }}" class="btn btn-danger">Back</a>
                         </div>
                     </form>
