@@ -1,3 +1,5 @@
-<footer class="py-4" style="background-color: #fff3e8">
-    <div class="container"><p class="m-0 text-center text-muted">Copyright &copy; JaceInstrumental 2023</p></div>
+<footer>
+    <div class="text-center text-muted p-4" style="background-color: #fff3e8">
+        <small>Copyright &copy; JaceInstrumental 2023</small>
+    </div>    
 </footer>
