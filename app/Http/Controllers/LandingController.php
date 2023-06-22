@@ -30,19 +30,19 @@ class LandingController extends Controller
         } else if ($request->min == '0' && $request->max == '0') {  // mengambil nilai harga min dan max              
             $products = collect(); // membuat koleksi kosong jika nilai min dan max adalah 0
         } else if($request->min && $request->max) {
-            $products = Product::whereBetween('price', [$request->min, $request->max])->get();        
+            $products = Product::whereBetween('price', [$request->min, $request->max])->limit(8)->get();        
         } else if($request->min == '0' && $request->max) { 
-            $products = Product::whereBetween('price', [$request->min, $request->max])->get();
+            $products = Product::whereBetween('price', [$request->min, $request->max])->limit(8)->get();
         } else if($request->min && $request->max == '0') { 
-            $products = Product::whereBetween('price', [$request->min, $request->max])->get();
+            $products = Product::whereBetween('price', [$request->min, $request->max])->limit(8)->get();
         } else if($request->min) {
-            $products = Product::where('price', '>=', $request->min)->get();                        
-        } else if($request->min === '0') { 
-            $products = Product::where('price', '>=', $request->min)->get();
+            $products = Product::where('price', '>=', $request->min)->limit(8)->get();                        
+        } else if($request->min == '0') { 
+            $products = Product::where('price', '>=', $request->min)->limit(8)->get();
         } else if($request->max) { 
-            $products = Product::where('price', '<=', $request->max)->get();
+            $products = Product::where('price', '<=', $request->max)->limit(8)->get();
         } else if($request->max == '0') { 
-            $products = Product::where('price', '<=', $request->max)->get();
+            $products = Product::where('price', '<=', $request->max)->limit(8)->get();
         } else {                                            
             $products = Product::where('approve', 1)->inRandomOrder()->limit(8)->get(); // mengambil produk secara acak dengan batas 8 produk      
         }        
