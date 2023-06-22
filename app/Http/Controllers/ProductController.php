@@ -76,11 +76,9 @@ class ProductController extends Controller
                 'brands' => $request->brand,
                 'image' => $imageName,
             ]);        
-
             return redirect()->route('product.index')->with('success', 'Product Succesfully Added.');
         }
         
-
         $product = Product::create([
             'category_id' => $request->category,
             'name' => $request->name,
@@ -106,21 +104,17 @@ class ProductController extends Controller
     {
         if ($request->hasFile('image')){
             $old_image = Product::find($id)->image;
-            
             // menghapus file gambar yang lama
             Storage::delete('public/product/'.$old_image);
-            
             // ubah nama file gambar baru dengan angka random
             $imageName = time().'.'.$request->image->extension();
 
             Storage::putFileAs('public/product', $request->file('image'), $imageName);
-            
             Product::where('id', $id)->update([
                 'title' => $request->title,
                 'caption' => $request->caption,
                 'image' => $imageName,
             ]);
-            
         } else {
             // Mengambil data product berdasarkan id
             $products = Product::find($id);        

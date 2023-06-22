@@ -13,8 +13,7 @@ class SliderController extends Controller
     {
         // mengambil semua dari table sliders
         $sliders = Slider::all();
-
-        // passing data yang diambil ke view slider.index
+        
         return view('slider.index', compact('sliders'));
     }
 

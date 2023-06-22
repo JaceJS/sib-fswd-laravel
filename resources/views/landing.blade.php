@@ -1,8 +1,8 @@
 @extends('layouts.landing-main')
 
 @section('content')
-<!-- Carousels-->
 <div class="min-vh-100">
+    <!-- Carousels-->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             @foreach ($sliders as $slider)
@@ -31,15 +31,16 @@
         </button>
     </div>
 
+    <!-- Products Section-->
     <div class="container px-4 px-lg-5 mt-2">
-        <form action="{{ route('landing') }}" method="GET">
+        <form action="{{ route('landing.search') }}" method="GET">
             @csrf                    
             <div class="row g-3 my-5">
                 <div class="col-sm-3">
-                    <input type="text" class="form-control" placeholder="Min Price" name="min" value="{{ old('min') }}">
+                    <input type="text" class="form-control" placeholder="Min Price" name="min" value="{{ Session::get('old_min') }}">
                 </div>
                 <div class="col-sm-3">
-                    <input type="text" class="form-control" placeholder="Max Price" name="max" value={{ old('max') }}>
+                    <input type="text" class="form-control" placeholder="Max Price" name="max" value="{{ Session::get('old_max') }}">
                 </div>
                 <div class="col-sm-3">
                     <button type="submit" class="btn text-white" style="background-color: #742317;">Search</button>
