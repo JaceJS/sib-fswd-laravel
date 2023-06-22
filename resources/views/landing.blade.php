@@ -33,7 +33,7 @@
 
     <!-- Products Section-->
     <div class="container px-4 px-lg-5 mt-2">
-        <form action="{{ route('landing.search') }}" method="GET">
+        <form action="{{ route('landing') }}" method="GET">
             @csrf                    
             <div class="row g-3 my-5">
                 <div class="col-sm-3">
