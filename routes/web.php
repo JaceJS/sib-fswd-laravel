@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 // Landing Page
 Route::get('/', [LandingController::class, "index"]) -> name('landing')->middleware('web');
-Route::get('/{id}', [LandingController::class, 'show'])->name('show');
+Route::get('/category/{id}', [LandingController::class, 'show'])->name('show');
 Route::get('/about', [LandingController::class, "about"]) -> name('about');
 Route::get('/contact', [LandingController::class, "contact"]) -> name('contact');
 
