@@ -22,10 +22,10 @@ class ProductController extends Controller
     {
         $categories = Category::all();
 
-        $product = Product::where('id', $id)->with('category')->first();
+        $product = Product::where('approve','1')->where('id', $id)->with('category')->first();
 
         // mengambil category yang sama
-        $related = Product::where('category_id', $product->category->id)->inRandomOrder()->limit(4)->get();
+        $related = Product::where('approve','1')->where('category_id', $product->category->id)->inRandomOrder()->limit(4)->get();
 
         if ($product) {
             return view('product.show', compact('product', 'related', 'categories'));
@@ -111,6 +111,12 @@ class ProductController extends Controller
 
             Storage::putFileAs('public/product', $request->file('image'), $imageName);
             Product::where('id', $id)->update([
+                'category_id' => $request->category,
+                'name' => $request->name,
+                'price' => $request->price,
+                'sale_price' => $request->sale_price,
+                'brands' => $request->brand,
+                'rating' => $request->rating,
                 'image' => $imageName,
             ]);
         } else {
