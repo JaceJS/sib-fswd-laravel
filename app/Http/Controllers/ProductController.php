@@ -95,7 +95,7 @@ class ProductController extends Controller
         $products = Product::where('id', $id)->with('category')->first();
         
         $brands = Brand::all();
-        $categories = Product::all();
+        $categories = Category::all();
 
         return view('product.edit', compact('products', 'brands', 'categories'));
     }
