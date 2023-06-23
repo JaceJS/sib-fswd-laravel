@@ -25,9 +25,9 @@
             {{-- inputan nama --}}
             <div class="col-md-6">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control @error('category') is-invalid @enderror" id="name" name="name" value={{ $products->name }}>
+                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $products->name }}">
                 {{-- menampilkan tulisan error --}}
-                @error('category')
+                @error('name')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div> 
@@ -35,7 +35,7 @@
             {{-- inputan price --}}
             <div class="col-md-6">
                 <label for="price" class="form-label">Price</label>
-                <input type="number" class="form-control @error('category') is-invalid @enderror" id="price" name="price" value={{ $products->price }}  min="0" step="1000">
+                <input type="number" class="form-control @error('category') is-invalid @enderror" id="price" name="price" value="{{ $products->price }}"  min="0" step="1000">
                 {{-- menampilkan tulisan error --}}
                 @error('category')
                     <small class="text-danger">{{ $message }}</small>
@@ -45,7 +45,7 @@
             {{-- inputan sale price --}}
             <div class="col-md-6">
                 <label for="sale_price" class="form-label">Sale Price</label>
-                <input type="number" class="form-control @error('category') is-invalid @enderror" id="sale_price" name="sale_price" value={{ $products->sale_price }} min="0" step="1000">
+                <input type="number" class="form-control @error('category') is-invalid @enderror" id="sale_price" name="sale_price" value="{{ $products->sale_price }}" min="0" step="1000">
                 {{-- menampilkan tulisan error --}}
                 @error('category')
                     <small class="text-danger">{{ $message }}</small>
