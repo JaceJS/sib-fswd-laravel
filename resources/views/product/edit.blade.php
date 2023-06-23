@@ -10,10 +10,10 @@
             {{-- inputan category --}}
             <div class="col-md-6">
                 <label for="category" class="form-label">Category</label>
-                <select class="form-select @error('category') is-invalid @enderror" aria-label="category" id="category" name="category" required>
+                <select class="form-select @error('category') is-invalid @enderror" aria-label="category" id="category" name="category">
                     <option selected disabled>- Choose Category -</option>
                     @foreach ($categories as $cat)
-                        <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                        <option value="{{ $cat->id }}">{{ $cat->name }}</option>                        
                     @endforeach
                 </select>
                 {{-- menampilkan tulisan error --}}
@@ -35,9 +35,9 @@
             {{-- inputan price --}}
             <div class="col-md-6">
                 <label for="price" class="form-label">Price</label>
-                <input type="number" class="form-control @error('category') is-invalid @enderror" id="price" name="price" value="{{ $products->price }}"  min="0" step="1000">
+                <input type="number" class="form-control @error('price') is-invalid @enderror" id="price" name="price" value="{{ $products->price }}"  min="0" step="1000">
                 {{-- menampilkan tulisan error --}}
-                @error('category')
+                @error('price')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>            
@@ -45,9 +45,9 @@
             {{-- inputan sale price --}}
             <div class="col-md-6">
                 <label for="sale_price" class="form-label">Sale Price</label>
-                <input type="number" class="form-control @error('category') is-invalid @enderror" id="sale_price" name="sale_price" value="{{ $products->sale_price }}" min="0" step="1000">
+                <input type="number" class="form-control @error('sale_price') is-invalid @enderror" id="sale_price" name="sale_price" value="{{ $products->sale_price }}" min="0" step="1000">
                 {{-- menampilkan tulisan error --}}
-                @error('category')
+                @error('sale_price')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>

@@ -111,8 +111,6 @@ class ProductController extends Controller
 
             Storage::putFileAs('public/product', $request->file('image'), $imageName);
             Product::where('id', $id)->update([
-                'title' => $request->title,
-                'caption' => $request->caption,
                 'image' => $imageName,
             ]);
         } else {
